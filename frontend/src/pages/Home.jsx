@@ -48,22 +48,19 @@ const Home = () => {
     <div className="min-h-screen bg-white">
       {/* Header */}
       <header className="border-b-4 border-black bg-white sticky top-0 z-40">
-        <div className="container mx-auto px-4 py-3 flex items-center justify-between">
-          <div className="flex items-center gap-3">
+        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
+          <div className="flex items-center gap-4">
             <img
               src="https://customer-assets.emergentagent.com/job_2d80d311-23e3-4b67-a48c-a05b64438fa1/artifacts/ght79igp_Opcion%20A.jfif"
               alt="Costa Manitas Logo"
-              className="h-20 w-20 object-contain border-2 border-black rounded-full bg-white"
+              className="h-24 w-auto"
             />
-            <div>
-              <h1 className="text-2xl md:text-3xl font-black uppercase tracking-tight">Costa Manitas Gijón</h1>
-              <p className="text-xs md:text-sm font-bold">Tu manitas de confianza</p>
-            </div>
           </div>
           <a href={contactInfo.whatsappLink} target="_blank" rel="noopener noreferrer">
-            <Button className="bg-yellow-400 hover:bg-yellow-500 text-black font-bold border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all">
+            <Button className="bg-yellow-400 hover:bg-yellow-500 text-black font-bold text-base border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all px-6 py-3">
               <MessageCircle className="mr-2 h-5 w-5" />
-              <span className="hidden md:inline">Contactar</span>
+              <span className="hidden md:inline">Contactar WhatsApp</span>
+              <span className="md:hidden">WhatsApp</span>
             </Button>
           </a>
         </div>
@@ -343,24 +340,6 @@ const Home = () => {
           </p>
         </div>
       </footer>
-
-      {/* Floating WhatsApp Button */}
-      <a
-        href={contactInfo.whatsappLink}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="fixed bottom-24 right-8 z-40 bg-yellow-400 hover:bg-yellow-500 p-4 rounded-full border-4 border-black shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] transition-all hover:scale-110 animate-pulse"
-        aria-label="Contactar por WhatsApp"
-        title="¡Contáctame por WhatsApp!"
-      >
-        <MessageCircle className="h-8 w-8 text-black" />
-        {/* Speech bubble */}
-        <div className="absolute -top-16 right-0 bg-white border-4 border-black px-3 py-2 rounded-lg shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] whitespace-nowrap opacity-0 hover:opacity-100 transition-opacity pointer-events-none">
-          <p className="text-sm font-black">¡Escríbeme!</p>
-          <div className="absolute -bottom-2 right-4 w-0 h-0 border-l-8 border-l-transparent border-r-8 border-r-transparent border-t-8 border-t-black"></div>
-          <div className="absolute -bottom-1 right-4 w-0 h-0 border-l-[7px] border-l-transparent border-r-[7px] border-r-transparent border-t-[7px] border-t-white"></div>
-        </div>
-      </a>
     </div>
   );
 };
