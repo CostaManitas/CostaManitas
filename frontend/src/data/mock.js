@@ -16,14 +16,14 @@ export const services = [
   {
     id: 3,
     title: "Montajes y perforaciones",
-    description: "Instalación y montaje de todo tipo",
+    description: "Baldas · estantes · pasamanos · barras de seguridad · televisores",
     icon: "drill"
   },
   {
     id: 4,
     title: "Electricidad básica",
     description: "Sustitución de enchufes, lámparas, interruptores, canaletas",
-    icon: "lightbulb"
+    icon: "zap"
   },
   {
     id: 5,
@@ -46,14 +46,20 @@ export const services = [
   {
     id: 8,
     title: "Jardín – trabajos puntuales",
-    description: "Poda ligera, limpieza y mantenimiento básico",
-    icon: "leaf"
+    description: "Corte, limpieza y mantenimiento básico",
+    icon: "scissors"
   },
   {
     id: 9,
     title: "Revisión y pequeños mantenimientos",
     description: "Antes de que el problema crezca",
-    icon: "search"
+    icon: "search-check"
+  },
+  {
+    id: 10,
+    title: "Asesoramiento práctico en domicilio",
+    description: "Qué reparar, qué no, y cómo hacerlo bien",
+    icon: "clipboard-check"
   }
 ];
 

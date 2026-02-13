@@ -3,12 +3,13 @@ import {
   Hammer,
   Paintbrush,
   Drill,
-  Lightbulb,
+  Zap,
   Droplet,
   DoorOpen,
   Wrench,
-  Leaf,
-  Search,
+  Scissors,
+  SearchCheck,
+  ClipboardCheck,
   Phone,
   MessageCircle,
   Star,
@@ -23,12 +24,13 @@ const iconMap = {
   hammer: Hammer,
   paintbrush: Paintbrush,
   drill: Drill,
-  lightbulb: Lightbulb,
+  zap: Zap,
   droplet: Droplet,
   "door-open": DoorOpen,
   wrench: Wrench,
-  leaf: Leaf,
-  search: Search
+  scissors: Scissors,
+  "search-check": SearchCheck,
+  "clipboard-check": ClipboardCheck
 };
 
 const Home = () => {
@@ -46,22 +48,22 @@ const Home = () => {
     <div className="min-h-screen bg-white">
       {/* Header */}
       <header className="border-b-4 border-black bg-white sticky top-0 z-40">
-        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-4">
+        <div className="container mx-auto px-4 py-3 flex items-center justify-between">
+          <div className="flex items-center gap-3">
             <img
               src="https://customer-assets.emergentagent.com/job_2d80d311-23e3-4b67-a48c-a05b64438fa1/artifacts/ght79igp_Opcion%20A.jfif"
               alt="Costa Manitas Logo"
-              className="h-16 w-auto"
+              className="h-20 w-20 object-contain border-2 border-black rounded-full bg-white"
             />
             <div>
-              <h1 className="text-2xl font-black uppercase tracking-tight">Costa Manitas</h1>
-              <p className="text-sm font-bold">Tu manitas de confianza en Gijón</p>
+              <h1 className="text-2xl md:text-3xl font-black uppercase tracking-tight">Costa Manitas Gijón</h1>
+              <p className="text-xs md:text-sm font-bold">Tu manitas de confianza</p>
             </div>
           </div>
           <a href={contactInfo.whatsappLink} target="_blank" rel="noopener noreferrer">
             <Button className="bg-yellow-400 hover:bg-yellow-500 text-black font-bold border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all">
               <MessageCircle className="mr-2 h-5 w-5" />
-              Contactar
+              <span className="hidden md:inline">Contactar</span>
             </Button>
           </a>
         </div>
@@ -139,18 +141,21 @@ const Home = () => {
               return (
                 <Card
                   key={service.id}
-                  className="border-4 border-black shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] transition-all hover:-translate-y-1 bg-white"
+                  className="border-4 border-black shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] transition-all hover:-translate-y-1 bg-white relative overflow-hidden"
                 >
                   <CardHeader>
-                    <div className="w-16 h-16 bg-yellow-400 border-2 border-black rounded-lg flex items-center justify-center mb-4 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-                      <Icon className="h-8 w-8" />
+                    <div className="relative">
+                      <div className="w-20 h-20 bg-yellow-400 border-4 border-black rounded-full flex items-center justify-center mb-4 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] relative z-10">
+                        <Icon className="h-10 w-10 stroke-[2.5px]" />
+                      </div>
+                      <div className="absolute top-0 left-16 w-16 h-16 bg-yellow-400 opacity-20 rounded-full blur-xl"></div>
                     </div>
-                    <CardTitle className="font-black text-xl uppercase">
+                    <CardTitle className="font-black text-lg uppercase leading-tight">
                       {service.title}
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <CardDescription className="text-gray-700 font-bold text-base">
+                    <CardDescription className="text-gray-700 font-bold text-base leading-relaxed">
                       {service.description}
                     </CardDescription>
                   </CardContent>
