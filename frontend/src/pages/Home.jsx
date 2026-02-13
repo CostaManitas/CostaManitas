@@ -53,8 +53,12 @@ const Home = () => {
             <img
               src="https://customer-assets.emergentagent.com/job_2d80d311-23e3-4b67-a48c-a05b64438fa1/artifacts/ght79igp_Opcion%20A.jfif"
               alt="Costa Manitas Logo"
-              className="h-24 w-auto"
+              className="h-20 w-auto"
             />
+            <div>
+              <h1 className="text-2xl md:text-3xl font-black uppercase tracking-tight">Costa Manitas Gijón</h1>
+              <p className="text-xs md:text-sm font-bold">Tu manitas de confianza</p>
+            </div>
           </div>
           <a href={contactInfo.whatsappLink} target="_blank" rel="noopener noreferrer">
             <Button className="bg-yellow-400 hover:bg-yellow-500 text-black font-bold text-base border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all px-6 py-3">
@@ -142,9 +146,9 @@ const Home = () => {
                 >
                   <CardHeader>
                     {/* Comic-style illustration box */}
-                    <div className="relative mb-6 -mx-6 -mt-6">
+                    <div className="relative mb-4 -mx-6 -mt-6">
                       <div 
-                        className="w-full h-48 bg-gradient-to-br from-gray-50 to-gray-100 border-b-4 border-black flex items-center justify-center relative overflow-hidden"
+                        className="w-full h-32 bg-gradient-to-br from-gray-50 to-gray-100 border-b-4 border-black flex items-center justify-center relative overflow-hidden"
                         style={{
                           backgroundImage: `
                             radial-gradient(circle, #000 1px, transparent 1px),
@@ -160,22 +164,22 @@ const Home = () => {
                         }}></div>
                         
                         {/* Icon in comic frame */}
-                        <div className="relative z-10 bg-white border-4 border-black p-8 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]"
+                        <div className="relative z-10 bg-white border-4 border-black p-4 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
                              style={{
                                transform: `rotate(${index % 2 === 0 ? '-2deg' : '2deg'})`
                              }}>
-                          <Icon className="h-20 w-20 stroke-[2.5px]" />
+                          <Icon className="h-12 w-12 stroke-[2.5px]" />
                         </div>
                         
                         {/* Comic speed lines */}
-                        <div className="absolute top-8 left-8 w-16 h-1 bg-black transform -rotate-12"></div>
-                        <div className="absolute top-12 left-6 w-12 h-1 bg-black transform -rotate-12"></div>
-                        <div className="absolute bottom-8 right-8 w-16 h-1 bg-black transform rotate-12"></div>
-                        <div className="absolute bottom-12 right-6 w-12 h-1 bg-black transform rotate-12"></div>
+                        <div className="absolute top-4 left-4 w-12 h-1 bg-black transform -rotate-12"></div>
+                        <div className="absolute top-6 left-3 w-8 h-1 bg-black transform -rotate-12"></div>
+                        <div className="absolute bottom-4 right-4 w-12 h-1 bg-black transform rotate-12"></div>
+                        <div className="absolute bottom-6 right-3 w-8 h-1 bg-black transform rotate-12"></div>
                       </div>
                     </div>
                     
-                    <CardTitle className="font-black text-xl uppercase leading-tight mb-3">
+                    <CardTitle className="font-black text-lg uppercase leading-tight mb-3">
                       {service.title}
                     </CardTitle>
                   </CardHeader>
