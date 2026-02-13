@@ -132,39 +132,50 @@ const Home = () => {
             Servicios
             <span className="absolute -bottom-2 left-0 w-full h-2 bg-yellow-400"></span>
           </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {services.map((service, index) => {
               const Icon = iconMap[service.icon];
-              const rotation = index % 2 === 0 ? "-rotate-3" : "rotate-3";
               return (
                 <Card
                   key={service.id}
-                  className="border-4 border-black shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] transition-all hover:-translate-y-1 bg-white relative overflow-visible"
+                  className="border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all hover:-translate-y-1 bg-white"
                 >
                   <CardHeader>
-                    <div className="relative mb-4">
-                      {/* Comic burst effect */}
-                      <div className="absolute -inset-4 z-0">
-                        <div className="absolute top-0 left-0 w-6 h-6 bg-yellow-400 rotate-45 opacity-60"></div>
-                        <div className="absolute top-2 right-0 w-4 h-4 bg-yellow-400 rotate-12 opacity-50"></div>
-                        <div className="absolute bottom-0 left-2 w-5 h-5 bg-yellow-400 -rotate-12 opacity-50"></div>
-                        <div className="absolute bottom-2 right-2 w-3 h-3 bg-yellow-400 rotate-45 opacity-60"></div>
+                    {/* Comic-style illustration box */}
+                    <div className="relative mb-6 -mx-6 -mt-6">
+                      <div 
+                        className="w-full h-48 bg-gradient-to-br from-gray-50 to-gray-100 border-b-4 border-black flex items-center justify-center relative overflow-hidden"
+                        style={{
+                          backgroundImage: `
+                            radial-gradient(circle, #000 1px, transparent 1px),
+                            radial-gradient(circle, #000 1px, transparent 1px)
+                          `,
+                          backgroundSize: '4px 4px, 6px 6px',
+                          backgroundPosition: '0 0, 3px 3px'
+                        }}
+                      >
+                        {/* Diagonal lines texture */}
+                        <div className="absolute inset-0 opacity-5" style={{
+                          backgroundImage: 'repeating-linear-gradient(45deg, black 0, black 2px, transparent 2px, transparent 8px)'
+                        }}></div>
+                        
+                        {/* Icon in comic frame */}
+                        <div className="relative z-10 bg-white border-4 border-black p-8 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]"
+                             style={{
+                               transform: `rotate(${index % 2 === 0 ? '-2deg' : '2deg'})`
+                             }}>
+                          <Icon className="h-20 w-20 stroke-[2.5px]" />
+                        </div>
+                        
+                        {/* Comic speed lines */}
+                        <div className="absolute top-8 left-8 w-16 h-1 bg-black transform -rotate-12"></div>
+                        <div className="absolute top-12 left-6 w-12 h-1 bg-black transform -rotate-12"></div>
+                        <div className="absolute bottom-8 right-8 w-16 h-1 bg-black transform rotate-12"></div>
+                        <div className="absolute bottom-12 right-6 w-12 h-1 bg-black transform rotate-12"></div>
                       </div>
-                      
-                      {/* Icon container with comic style */}
-                      <div className={`w-24 h-24 bg-yellow-400 border-4 border-black flex items-center justify-center shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] relative z-10 ${rotation} hover:rotate-0 transition-transform duration-300`}
-                           style={{
-                             clipPath: "polygon(10% 0%, 90% 0%, 100% 10%, 100% 90%, 90% 100%, 10% 100%, 0% 90%, 0% 10%)"
-                           }}>
-                        <Icon className="h-12 w-12 stroke-[3px] text-black" />
-                      </div>
-                      
-                      {/* Comic lines effect */}
-                      <div className="absolute -top-2 -right-2 w-8 h-1 bg-black"></div>
-                      <div className="absolute -top-1 -right-3 w-6 h-1 bg-black"></div>
-                      <div className="absolute top-0 -right-4 w-4 h-1 bg-black"></div>
                     </div>
-                    <CardTitle className="font-black text-lg uppercase leading-tight">
+                    
+                    <CardTitle className="font-black text-xl uppercase leading-tight mb-3">
                       {service.title}
                     </CardTitle>
                   </CardHeader>
