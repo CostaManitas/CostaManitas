@@ -1,0 +1,46 @@
+═══════════════════════════════════════════════════════════════
+  CÓMO DESCARGAR TU LANDING PAGE COSTA MANITAS
+═══════════════════════════════════════════════════════════════
+
+Tu archivo ZIP está listo en:
+📦 /app/costa-manitas-website.zip (465 KB)
+
+
+📥 OPCIONES PARA DESCARGAR:
+--------------------------
+
+OPCIÓN 1: Desde el IDE de Emergent
+• En el panel lateral izquierdo, navega a la carpeta /app/
+• Encuentra el archivo "costa-manitas-website.zip"
+• Click derecho → Descargar
+• O arrastra el archivo a tu escritorio
+
+
+OPCIÓN 2: Desde la terminal
+• Ejecuta: cd /app && ls -lh costa-manitas-website.zip
+• El archivo está ahí y puedes descargarlo
+
+
+OPCIÓN 3: Contactar soporte técnico
+Si tienes problemas para descargar:
+• Discord: https://discord.gg/emergent
+• Email: soporte técnico de Emergent
+
+
+═══════════════════════════════════════════════════════════════
+
+📦 CONTENIDO DEL ZIP:
+• Landing page completa (carpeta build/)
+• Archivo .htaccess configurado para Apache
+• INSTRUCCIONES-DINAHOSTING.txt (guía paso a paso)
+• Todo optimizado y listo para subir
+
+
+🚀 SIGUIENTE PASO:
+1. Descarga el ZIP
+2. Descomprímelo en tu PC
+3. Sube el contenido de la carpeta "build/" a tu Dinahosting
+4. Sigue las instrucciones del archivo INSTRUCCIONES-DINAHOSTING.txt
+
+
+═══════════════════════════════════════════════════════════════
