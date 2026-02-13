@@ -85,8 +85,13 @@ Crear una landing page para un servicio de manitas (handyman) llamado "Costa Man
 - [✅] Integración WhatsApp con QR
 - [✅] Diseño comic style B&N + amarillo
 - [✅] Galería de trabajos
+- [✅] 10 servicios actualizados
+- [✅] Exportado a GitHub: https://github.com/CostaManitas/CostaManitas
 
-### P1 (Alta prioridad) - Futuro
+### P1 (Alta prioridad) - Deployment
+- [⏳] Subir a DonDominio.com
+- [ ] Activar SSL/HTTPS
+- [ ] Configurar dominio personalizado
 - [ ] Optimización SEO (meta tags, structured data)
 - [ ] Formulario de contacto opcional (backup a WhatsApp)
 - [ ] Google Analytics o tracking
