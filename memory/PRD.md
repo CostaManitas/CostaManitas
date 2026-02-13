@@ -26,26 +26,27 @@ Crear una landing page para un servicio de manitas (handyman) llamado "Costa Man
 
 ### Frontend
 - **Página Home completa** (`/app/frontend/src/pages/Home.jsx`)
-  - Header sticky con logo y botón de contacto
+  - Header sticky con logo agrandado (20x20, circular con borde) y botón de contacto
   - Hero section con slogan "¡Cuéntame qué necesitas!"
   - Sección "Sobre Costa" con descripción del servicio
-  - Sección de Servicios con 9 servicios en cards (grid 3x3)
+  - Sección de Servicios con 10 servicios en cards con iconos destacados en estilo comic
   - Sección de Testimonios con 3 opiniones de clientes
   - Galería de trabajos con carousel de 6 imágenes
   - Sección de Contacto con información y QR code
   - Footer con copyright
   - Botón flotante de WhatsApp
   
-- **Servicios implementados**:
-  1. Retoques y reparación de madera existente
-  2. Esmaltes, barniz y antióxido
-  3. Montajes y perforaciones
-  4. Electricidad básica
-  5. Fontanería simple
-  6. Puertas y ajustes
-  7. Reparaciones domésticas puntuales
-  8. Jardín – trabajos puntuales
-  9. Revisión y pequeños mantenimientos
+- **Servicios implementados** (Actualizado - 10 servicios):
+  1. Retoques y reparación de madera existente - Puertas · muebles · pequeños elementos
+  2. Esmaltes, barniz y antióxido - Para madera y metal
+  3. Montajes y perforaciones - Baldas · estantes · pasamanos · barras de seguridad · televisores
+  4. Electricidad básica - Sustitución de enchufes, lámparas, interruptores, canaletas
+  5. Fontanería simple - Grifos · sifones · silicona
+  6. Puertas y ajustes - Bisagras · cierres · alineación
+  7. Reparaciones domésticas puntuales - Pequeños arreglos en casa
+  8. Jardín – trabajos puntuales - Corte, limpieza y mantenimiento básico
+  9. Revisión y pequeños mantenimientos - Antes de que el problema crezca
+  10. Asesoramiento práctico en domicilio - Qué reparar, qué no, y cómo hacerlo bien
 
 - **Datos Mock** (`/app/frontend/src/data/mock.js`)
   - Servicios con iconos de lucide-react
