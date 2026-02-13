@@ -136,19 +136,36 @@ const Home = () => {
             <span className="absolute -bottom-2 left-0 w-full h-2 bg-yellow-400"></span>
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {services.map((service) => {
+            {services.map((service, index) => {
               const Icon = iconMap[service.icon];
+              const rotation = index % 2 === 0 ? "-rotate-3" : "rotate-3";
               return (
                 <Card
                   key={service.id}
-                  className="border-4 border-black shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] transition-all hover:-translate-y-1 bg-white relative overflow-hidden"
+                  className="border-4 border-black shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] transition-all hover:-translate-y-1 bg-white relative overflow-visible"
                 >
                   <CardHeader>
-                    <div className="relative">
-                      <div className="w-20 h-20 bg-yellow-400 border-4 border-black rounded-full flex items-center justify-center mb-4 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] relative z-10">
-                        <Icon className="h-10 w-10 stroke-[2.5px]" />
+                    <div className="relative mb-4">
+                      {/* Comic burst effect */}
+                      <div className="absolute -inset-4 z-0">
+                        <div className="absolute top-0 left-0 w-6 h-6 bg-yellow-400 rotate-45 opacity-60"></div>
+                        <div className="absolute top-2 right-0 w-4 h-4 bg-yellow-400 rotate-12 opacity-50"></div>
+                        <div className="absolute bottom-0 left-2 w-5 h-5 bg-yellow-400 -rotate-12 opacity-50"></div>
+                        <div className="absolute bottom-2 right-2 w-3 h-3 bg-yellow-400 rotate-45 opacity-60"></div>
                       </div>
-                      <div className="absolute top-0 left-16 w-16 h-16 bg-yellow-400 opacity-20 rounded-full blur-xl"></div>
+                      
+                      {/* Icon container with comic style */}
+                      <div className={`w-24 h-24 bg-yellow-400 border-4 border-black flex items-center justify-center shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] relative z-10 ${rotation} hover:rotate-0 transition-transform duration-300`}
+                           style={{
+                             clipPath: "polygon(10% 0%, 90% 0%, 100% 10%, 100% 90%, 90% 100%, 10% 100%, 0% 90%, 0% 10%)"
+                           }}>
+                        <Icon className="h-12 w-12 stroke-[3px] text-black" />
+                      </div>
+                      
+                      {/* Comic lines effect */}
+                      <div className="absolute -top-2 -right-2 w-8 h-1 bg-black"></div>
+                      <div className="absolute -top-1 -right-3 w-6 h-1 bg-black"></div>
+                      <div className="absolute top-0 -right-4 w-4 h-1 bg-black"></div>
                     </div>
                     <CardTitle className="font-black text-lg uppercase leading-tight">
                       {service.title}
@@ -332,10 +349,17 @@ const Home = () => {
         href={contactInfo.whatsappLink}
         target="_blank"
         rel="noopener noreferrer"
-        className="fixed bottom-8 right-8 z-50 bg-yellow-400 hover:bg-yellow-500 p-4 rounded-full border-4 border-black shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] transition-all hover:scale-110"
+        className="fixed bottom-24 right-8 z-40 bg-yellow-400 hover:bg-yellow-500 p-4 rounded-full border-4 border-black shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] transition-all hover:scale-110 animate-pulse"
         aria-label="Contactar por WhatsApp"
+        title="¡Contáctame por WhatsApp!"
       >
         <MessageCircle className="h-8 w-8 text-black" />
+        {/* Speech bubble */}
+        <div className="absolute -top-16 right-0 bg-white border-4 border-black px-3 py-2 rounded-lg shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] whitespace-nowrap opacity-0 hover:opacity-100 transition-opacity pointer-events-none">
+          <p className="text-sm font-black">¡Escríbeme!</p>
+          <div className="absolute -bottom-2 right-4 w-0 h-0 border-l-8 border-l-transparent border-r-8 border-r-transparent border-t-8 border-t-black"></div>
+          <div className="absolute -bottom-1 right-4 w-0 h-0 border-l-[7px] border-l-transparent border-r-[7px] border-r-transparent border-t-[7px] border-t-white"></div>
+        </div>
       </a>
     </div>
   );
