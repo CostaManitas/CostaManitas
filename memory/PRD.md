@@ -1,6 +1,6 @@
 # Costa Manitas - Product Requirements Document
 
-## 📅 Creado: 13 de Febrero, 2026
+## 📅 Actualizado: 14 de Febrero, 2026
 
 ## 🎯 Problema Original
 Crear una landing page para un servicio de manitas (handyman) llamado "Costa Manitas" basado en el diseño del flyer adjunto. La página debe:
@@ -9,6 +9,7 @@ Crear una landing page para un servicio de manitas (handyman) llamado "Costa Man
 - Contacto exclusivo por WhatsApp con QR code visible
 - Todo el contenido en español
 - Solo servicio en Gijón
+- **SEO optimizado** con HTML pre-renderizado para buscadores
 
 ## 👥 Usuario Objetivo
 - **Usuario principal**: Propietarios de viviendas en Gijón que necesitan servicios de mantenimiento y reparación del hogar
@@ -20,101 +21,114 @@ Crear una landing page para un servicio de manitas (handyman) llamado "Costa Man
 2. **Estructura**: Hero + Sobre Costa + Servicios + Testimonios + Galería + Contacto + Footer
 3. **QR Code**: Generado automáticamente para WhatsApp
 4. **Botón WhatsApp**: Flotante (siempre visible)
-5. **Galería**: De trabajos realizados
+5. **Galería**: De trabajos realizados con carrusel
 
-## ✅ Implementado (13 Feb 2026)
+## ✅ Implementado
+
+### Migración a Next.js (14 Feb 2026)
+- ✅ Migrado de Create React App a Next.js 14.2.18
+- ✅ Static Site Generation (SSG) con `output: 'export'`
+- ✅ HTML pre-renderizado con todo el contenido visible sin JavaScript
+- ✅ Meta tags SEO completos (title, description, keywords)
+- ✅ Open Graph tags para redes sociales
+- ✅ Twitter Cards
+- ✅ JSON-LD structured data (LocalBusiness schema)
+- ✅ robots.txt y sitemap.xml
+- ✅ .htaccess para servidor Apache (DonDominio)
 
 ### Frontend
-- **Página Home completa** (`/app/frontend/src/pages/Home.jsx`)
-  - Header sticky con logo agrandado (20x20, circular con borde) y botón de contacto
+- **Página Home completa** (`/app/frontend/src/app/page.js`)
+  - Header sticky con logo y botón de contacto WhatsApp
   - Hero section con slogan "¡Cuéntame qué necesitas!"
   - Sección "Sobre Costa" con descripción del servicio
-  - Sección de Servicios con 10 servicios en cards con iconos destacados en estilo comic
+  - Sección de Servicios con 10 servicios en cards con iconos
   - Sección de Testimonios con 3 opiniones de clientes
-  - Galería de trabajos con carousel de 6 imágenes
+  - Galería de trabajos con carrusel interactivo
   - Sección de Contacto con información y QR code
   - Footer con copyright
   - Botón flotante de WhatsApp
   
-- **Servicios implementados** (Actualizado - 10 servicios):
-  1. Retoques y reparación de madera existente - Puertas · muebles · pequeños elementos
-  2. Esmaltes, barniz y antióxido - Para madera y metal
-  3. Montajes y perforaciones - Baldas · estantes · pasamanos · barras de seguridad · televisores
-  4. Electricidad básica - Sustitución de enchufes, lámparas, interruptores, canaletas
-  5. Fontanería simple - Grifos · sifones · silicona
-  6. Puertas y ajustes - Bisagras · cierres · alineación
-  7. Reparaciones domésticas puntuales - Pequeños arreglos en casa
-  8. Jardín – trabajos puntuales - Corte, limpieza y mantenimiento básico
-  9. Revisión y pequeños mantenimientos - Antes de que el problema crezca
-  10. Asesoramiento práctico en domicilio - Qué reparar, qué no, y cómo hacerlo bien
-
-- **Datos Mock** (`/app/frontend/src/data/mock.js`)
-  - Servicios con iconos de lucide-react
-  - Testimonios de clientes
-  - Galería de imágenes de Unsplash
-  - Información de contacto (WhatsApp: 687 70 54 05)
-  - QR Code generado automáticamente
+- **10 Servicios implementados**:
+  1. Retoques y reparación de madera existente
+  2. Esmaltes, barniz y antióxido
+  3. Montajes y perforaciones
+  4. Electricidad básica
+  5. Fontanería simple
+  6. Puertas y ajustes
+  7. Reparaciones domésticas puntuales
+  8. Jardín – trabajos puntuales
+  9. Revisión y pequeños mantenimientos
+  10. Asesoramiento práctico en domicilio
 
 - **Estilos**
   - Comic style con bordes negros gruesos (4px)
   - Sombras tipo cartoon (box-shadow offset)
   - Color amarillo (#FCD34D) para highlights
-  - Componentes de shadcn/ui (Button, Card)
-  - Transiciones suaves en elementos interactivos
   - Responsive design
+  - Iconos: lucide-react
 
 - **Integración WhatsApp**
   - Enlace directo: https://wa.me/34687705405
-  - QR Code: https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://wa.me/34687705405
-  - Botón flotante fixed bottom-right
-  - Múltiples CTAs en hero, header y sección de contacto
+  - QR Code: API externa (qrserver.com)
+  - 4 puntos de contacto: Header, Hero, Contacto, Flotante
 
 ## 🔄 Estado Actual
-- ✅ Frontend con mock data completado
-- ✅ Diseño comic style implementado
+- ✅ Frontend con Next.js SSG completado
+- ✅ SEO completo implementado
 - ✅ WhatsApp integration completa
 - ✅ QR Code funcional
-- ✅ Galería de trabajos con carousel
+- ✅ Galería con carrusel interactivo
 - ✅ Responsive design
+- ✅ Build estático generado en `/app/frontend/out/`
 - ⏳ Backend: No requerido (landing page estática)
+
+## 📁 Archivos para Despliegue
+El contenido de `/app/frontend/out/` debe subirse a DonDominio:
+- `index.html` - Página principal pre-renderizada
+- `404.html` - Página de error
+- `_next/` - Assets de Next.js (CSS, JS)
+- `.htaccess` - Configuración Apache
+- `robots.txt` - Para buscadores (copiado en build)
+- `sitemap.xml` - Mapa del sitio (copiado en build)
 
 ## 📋 Backlog Priorizado
 
 ### P0 (Crítico) - Completado ✅
+- [✅] Migración a Next.js con SSG
+- [✅] SEO completo (meta tags, structured data)
 - [✅] Página home con todas las secciones
 - [✅] Integración WhatsApp con QR
 - [✅] Diseño comic style B&N + amarillo
-- [✅] Galería de trabajos
-- [✅] 10 servicios actualizados
-- [✅] Exportado a GitHub: https://github.com/CostaManitas/CostaManitas
 
 ### P1 (Alta prioridad) - Deployment
-- [⏳] Subir a DonDominio.com
+- [⏳] Subir `/app/frontend/out/` a DonDominio
+- [ ] Configurar dominio costamanitas.com
 - [ ] Activar SSL/HTTPS
-- [ ] Configurar dominio personalizado
-- [ ] Optimización SEO (meta tags, structured data)
-- [ ] Formulario de contacto opcional (backup a WhatsApp)
-- [ ] Google Analytics o tracking
-- [ ] Galería con imágenes reales de trabajos
+- [ ] Actualizar canonical URL y sitemap
 
 ### P2 (Media prioridad) - Mejoras
-- [ ] Animaciones avanzadas (parallax, scroll effects)
-- [ ] Blog o sección de consejos de mantenimiento
-- [ ] Calculadora de presupuestos
-- [ ] Sistema de reservas/calendario
-- [ ] Multi-idioma (asturiano/inglés)
+- [ ] Iconos de servicios con estilo cómic más elaborado
+- [ ] Reemplazar imágenes de galería con fotos reales
+- [ ] Google Analytics o tracking
+- [ ] Testimonios reales de clientes
 
-## 🎯 Próximos Pasos
-1. Usuario debe probar la landing page
-2. Revisar diseño y ajustar si es necesario
-3. Reemplazar imágenes mock de galería con fotos reales
-4. Añadir meta tags para SEO
-5. Considerar añadir testimonios reales de clientes
+### P3 (Baja prioridad) - Futuro
+- [ ] Formulario de contacto (backup a WhatsApp)
+- [ ] Blog o sección de consejos
+- [ ] Multi-idioma
 
 ## 📝 Notas Técnicas
-- Stack: React + Shadcn UI
-- No requiere backend (landing page estática)
-- Imágenes de galería desde Unsplash (temporales)
-- QR generado via API externa (qrserver.com)
-- Iconos: lucide-react
-- Logo y flyer: Assets del usuario
+- **Stack**: Next.js 14.2.18, React 19, Tailwind CSS, lucide-react
+- **SSG**: Usa `output: 'export'` para generar HTML estático
+- **Hosting**: Preparado para Apache (DonDominio) con .htaccess
+- **No requiere backend**
+- **QR generado via API externa** (qrserver.com)
+
+## 🚀 Instrucciones de Despliegue para DonDominio
+
+1. Ejecutar `yarn build` en `/app/frontend`
+2. Subir todo el contenido de `/app/frontend/out/` al directorio raíz del hosting
+3. Asegurarse que `.htaccess` está incluido
+4. Verificar que el dominio apunta correctamente
+5. Activar SSL/HTTPS
+6. Actualizar las URLs en `sitemap.xml` y canonical tags
