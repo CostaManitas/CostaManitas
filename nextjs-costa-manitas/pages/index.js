@@ -126,7 +126,8 @@ export default function Home() {
         {/* Structured Data */}
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData, null, 2) }}
+          key="structured-data"
         />
       </Head>
 
