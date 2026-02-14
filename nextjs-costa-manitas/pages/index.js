@@ -217,7 +217,215 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Continue in next message due to length... */}
+        {/* Servicios Section */}
+        <section className="py-20 bg-gradient-to-br from-white to-gray-50 border-b-4 border-black">
+          <div className="container mx-auto px-4">
+            <h2 className="text-4xl md:text-5xl font-black uppercase text-center mb-12 relative inline-block left-1/2 -translate-x-1/2">
+              Servicios
+              <span className="absolute -bottom-2 left-0 w-full h-2 bg-yellow-400"></span>
+            </h2>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {services.map((service, index) => {
+                const Icon = iconMap[service.icon];
+                return (
+                  <Card
+                    key={service.id}
+                    className="border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all hover:-translate-y-1 bg-white"
+                  >
+                    <CardHeader>
+                      {/* Comic-style illustration box */}
+                      <div className="relative mb-4 -mx-6 -mt-6">
+                        <div 
+                          className="w-full h-32 bg-gradient-to-br from-gray-50 to-gray-100 border-b-4 border-black flex items-center justify-center relative overflow-hidden"
+                          style={{
+                            backgroundImage: `
+                              radial-gradient(circle, #000 1px, transparent 1px),
+                              radial-gradient(circle, #000 1px, transparent 1px)
+                            `,
+                            backgroundSize: '4px 4px, 6px 6px',
+                            backgroundPosition: '0 0, 3px 3px'
+                          }}
+                        >
+                          {/* Diagonal lines texture */}
+                          <div className="absolute inset-0 opacity-5" style={{
+                            backgroundImage: 'repeating-linear-gradient(45deg, black 0, black 2px, transparent 2px, transparent 8px)'
+                          }}></div>
+                          
+                          {/* Icon in comic frame */}
+                          <div className="relative z-10 bg-white border-4 border-black p-4 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
+                               style={{
+                                 transform: `rotate(${index % 2 === 0 ? '-2deg' : '2deg'})`
+                               }}>
+                            <Icon className="h-12 w-12 stroke-[2.5px]" />
+                          </div>
+                          
+                          {/* Comic speed lines */}
+                          <div className="absolute top-4 left-4 w-12 h-1 bg-black transform -rotate-12"></div>
+                          <div className="absolute top-6 left-3 w-8 h-1 bg-black transform -rotate-12"></div>
+                          <div className="absolute bottom-4 right-4 w-12 h-1 bg-black transform rotate-12"></div>
+                          <div className="absolute bottom-6 right-3 w-8 h-1 bg-black transform rotate-12"></div>
+                        </div>
+                      </div>
+                      
+                      <CardTitle className="font-black text-lg uppercase leading-tight mb-3">
+                        {service.title}
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <CardDescription className="text-gray-700 font-bold text-base leading-relaxed">
+                        {service.description}
+                      </CardDescription>
+                    </CardContent>
+                  </Card>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+        {/* Galería Section */}
+        <section className="py-20 bg-gradient-to-br from-gray-50 to-white border-b-4 border-black">
+          <div className="container mx-auto px-4">
+            <h2 className="text-4xl md:text-5xl font-black uppercase text-center mb-12 relative inline-block left-1/2 -translate-x-1/2">
+              Trabajos Realizados
+              <span className="absolute -bottom-2 left-0 w-full h-2 bg-yellow-400"></span>
+            </h2>
+            
+            {/* Featured Image Carousel */}
+            <div className="max-w-4xl mx-auto mb-8">
+              <div className="relative border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] bg-white">
+                <img
+                  src={galleryImages[currentImageIndex].image}
+                  alt={galleryImages[currentImageIndex].title}
+                  width="800"
+                  height="400"
+                  className="w-full h-96 object-cover"
+                />
+                <div className="absolute bottom-0 left-0 right-0 bg-yellow-400 border-t-4 border-black p-4">
+                  <p className="font-black text-xl uppercase text-center">
+                    {galleryImages[currentImageIndex].title}
+                  </p>
+                </div>
+                <button
+                  onClick={prevImage}
+                  className="absolute left-4 top-1/2 -translate-y-1/2 bg-white border-4 border-black p-3 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all"
+                  aria-label="Imagen anterior"
+                >
+                  <ChevronLeft className="h-6 w-6" />
+                </button>
+                <button
+                  onClick={nextImage}
+                  className="absolute right-4 top-1/2 -translate-y-1/2 bg-white border-4 border-black p-3 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all"
+                  aria-label="Imagen siguiente"
+                >
+                  <ChevronRight className="h-6 w-6" />
+                </button>
+              </div>
+            </div>
+
+            {/* Thumbnail Grid */}
+            <div className="grid grid-cols-3 md:grid-cols-6 gap-4 max-w-4xl mx-auto">
+              {galleryImages.map((image, index) => (
+                <button
+                  key={image.id}
+                  onClick={() => setCurrentImageIndex(index)}
+                  className={`border-4 border-black overflow-hidden transition-all ${
+                    currentImageIndex === index
+                      ? "shadow-[4px_4px_0px_0px_rgba(250,204,21,1)] scale-105"
+                      : "shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:scale-105"
+                  }`}
+                  aria-label={`Ver ${image.title}`}
+                >
+                  <img
+                    src={image.image}
+                    alt={image.title}
+                    width="200"
+                    height="150"
+                    className="w-full h-20 object-cover"
+                  />
+                </button>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Contact Section */}
+        <section className="py-20 bg-white">
+          <div className="container mx-auto px-4">
+            <h2 className="text-4xl md:text-5xl font-black uppercase text-center mb-12 relative inline-block left-1/2 -translate-x-1/2">
+              Contacto
+              <span className="absolute -bottom-2 left-0 w-full h-2 bg-yellow-400"></span>
+            </h2>
+            <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-8">
+              <div className="border-4 border-black p-8 bg-yellow-400 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+                <h3 className="text-3xl font-black uppercase mb-6">¡Hablemos!</h3>
+                <div className="space-y-4">
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 bg-white border-2 border-black rounded-lg flex items-center justify-center">
+                      <Phone className="h-6 w-6" />
+                    </div>
+                    <div>
+                      <p className="font-bold text-sm">Teléfono / WhatsApp</p>
+                      <p className="text-2xl font-black">{contactInfo.phone}</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 bg-white border-2 border-black rounded-lg flex items-center justify-center">
+                      <MessageCircle className="h-6 w-6" />
+                    </div>
+                    <div>
+                      <p className="font-bold text-sm">Ubicación</p>
+                      <p className="text-2xl font-black">{contactInfo.areaServed}</p>
+                    </div>
+                  </div>
+                  <div className="border-t-4 border-black pt-4 mt-4">
+                    <p className="font-bold text-sm mb-2">Horario</p>
+                    <p className="text-lg font-black">{contactInfo.schedule}</p>
+                  </div>
+                </div>
+                <a href={contactInfo.whatsappLink} target="_blank" rel="noopener noreferrer">
+                  <Button className="w-full mt-6 bg-black hover:bg-gray-800 text-white font-bold text-lg py-6 border-2 border-black shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] hover:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)] transition-all">
+                    <MessageCircle className="mr-2 h-6 w-6" />
+                    Enviar WhatsApp
+                  </Button>
+                </a>
+              </div>
+              <div className="border-4 border-black p-8 bg-white shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] flex flex-col items-center justify-center">
+                <h3 className="text-2xl font-black uppercase mb-4 text-center">
+                  Escanea el código QR
+                </h3>
+                <img
+                  src={contactInfo.qrCode}
+                  alt="QR Code WhatsApp Costa Manitas"
+                  width="200"
+                  height="200"
+                  className="w-48 h-48 border-4 border-black"
+                />
+                <p className="text-center font-bold mt-4 text-gray-700">
+                  Contáctame directamente desde tu móvil
+                </p>
+              </div>
+            </div>
+            <div className="mt-12 text-center">
+              <div className="inline-block bg-gray-100 border-4 border-black px-8 py-4 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
+                <p className="text-lg font-black uppercase">Presupuesto previo · Solo Gijón y zonas cercanas</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Footer */}
+        <footer className="bg-black text-white py-8 border-t-4 border-black">
+          <div className="container mx-auto px-4 text-center">
+            <p className="font-bold text-lg mb-2">Costa Manitas Gijón</p>
+            <p className="text-sm font-bold text-gray-400">
+              Tu manitas de confianza · {new Date().getFullYear()}
+            </p>
+            <p className="text-xs text-gray-500 mt-2">
+              Pequeñas reparaciones, mantenimiento y carpintería ligera en Gijón
+            </p>
+          </div>
+        </footer>
       </div>
     </>
   )
