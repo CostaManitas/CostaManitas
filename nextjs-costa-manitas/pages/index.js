@@ -1,11 +1,48 @@
-import dynamic from 'next/dynamic'
 import Head from 'next/head'
+import Image from 'next/image'
+import { useState } from 'react'
+import { 
+  Hammer, 
+  Paintbrush2, 
+  Drill, 
+  Zap, 
+  Droplets, 
+  DoorOpen, 
+  Wrench, 
+  Scissors, 
+  SearchCheck, 
+  ClipboardCheck, 
+  Phone, 
+  MessageCircle, 
+  ChevronLeft, 
+  ChevronRight 
+} from "lucide-react"
+import { services, galleryImages, contactInfo } from "../data/mock"
 
-const HomePage = dynamic(() => import('../components/HomePage'), {
-  ssr: true
-})
+const iconComponents = {
+  hammer: Hammer,
+  paintbrush: Paintbrush2,
+  drill: Drill,
+  zap: Zap,
+  droplet: Droplets,
+  "door-open": DoorOpen,
+  wrench: Wrench,
+  scissors: Scissors,
+  "search-check": SearchCheck,
+  "clipboard-check": ClipboardCheck
+};
 
-export default function Index() {
+export default function Home() {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  const nextImage = () => {
+    setCurrentImageIndex((prev) => (prev + 1) % galleryImages.length);
+  };
+
+  const prevImage = () => {
+    setCurrentImageIndex((prev) => (prev - 1 + galleryImages.length) % galleryImages.length);
+  };
+
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
@@ -22,8 +59,8 @@ export default function Index() {
     },
     "geo": {
       "@type": "GeoCoordinates",
-      "latitude": "43.5322",
-      "longitude": "-5.6611"
+      "latitude": 43.5322,
+      "longitude": -5.6611
     },
     "areaServed": {
       "@type": "City",
@@ -34,23 +71,260 @@ export default function Index() {
       "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
       "opens": "09:00",
       "closes": "19:00"
-    }]
-  }
+    }],
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": 5,
+      "reviewCount": 28
+    }
+  };
 
   return (
     <>
       <Head>
         <title>Costa Manitas Gijón | Pequeñas Reparaciones y Mantenimiento del Hogar</title>
         <meta name="description" content="Manitas de confianza en Gijón para pequeñas reparaciones, trabajos personalizados y carpintería ligera en el hogar. Profesional, claro y con precios transparentes." />
-        <meta name="keywords" content="manitas Gijón, reparaciones hogar Gijón, pequeñas reparaciones Gijón, mantenimiento hogar Gijón, arreglos en casa Gijón" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="keywords" content="manitas Gijón, reparaciones hogar Gijón, pequeñas reparaciones Gijón, mantenimiento hogar Gijón, arreglos en casa Gijón, carpintería ligera Gijón" />
+        
+        <meta property="og:title" content="Costa Manitas Gijón | Pequeñas Reparaciones y Mantenimiento del Hogar" />
+        <meta property="og:description" content="Manitas de confianza en Gijón para pequeñas reparaciones, trabajos personalizados y carpintería ligera." />
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="es_ES" />
+        
+        <meta name="geo.region" content="ES-O" />
+        <meta name="geo.placename" content="Gijón" />
+        
         <link rel="canonical" href="https://costamanitas.com" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
       </Head>
-      <HomePage />
+
+      <div className="min-h-screen bg-white">
+        {/* Header */}
+        <header className="border-b-4 border-black bg-white sticky top-0 z-40">
+          <div className="container mx-auto px-4 py-4 flex items-center justify-between">
+            <div className="flex items-center gap-4">
+              <img
+                src="https://customer-assets.emergentagent.com/job_2d80d311-23e3-4b67-a48c-a05b64438fa1/artifacts/ght79igp_Opcion%20A.jfif"
+                alt="Costa Manitas Gijón Logo"
+                width={80}
+                height={80}
+                className="h-20 w-auto"
+              />
+              <div>
+                <h1 className="text-2xl md:text-3xl font-black uppercase tracking-tight">Costa Manitas Gijón</h1>
+                <p className="text-xs md:text-sm font-bold">Tu manitas de confianza</p>
+              </div>
+            </div>
+            <a href={contactInfo.whatsappLink} target="_blank" rel="noopener noreferrer">
+              <button className="bg-yellow-400 hover:bg-yellow-500 text-black font-bold text-base border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all px-6 py-3 inline-flex items-center gap-2 rounded-md">
+                <MessageCircle className="h-5 w-5" />
+                <span className="hidden md:inline">Contactar WhatsApp</span>
+                <span className="md:hidden">WhatsApp</span>
+              </button>
+            </a>
+          </div>
+        </header>
+
+        {/* Hero Section */}
+        <section className="bg-gradient-to-br from-gray-50 to-white border-b-4 border-black">
+          <div className="container mx-auto px-4 py-12">
+            <div className="grid md:grid-cols-2 gap-12 items-start">
+              <div>
+                <div className="inline-block bg-yellow-400 border-2 border-black px-4 py-2 rotate-[-2deg] mb-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+                  <p className="text-sm font-black uppercase">Solo en Gijón</p>
+                </div>
+                <h2 className="text-5xl md:text-6xl font-black uppercase mb-6 leading-tight">
+                  ¡Cuéntame qué necesitas!
+                </h2>
+                <p className="text-xl mb-8 font-bold text-gray-700">
+                  Manitas de confianza en Gijón para pequeñas reparaciones y trabajos en carpintería ligera. Profesionalidad y precios claros para el hogar.
+                </p>
+                <div className="flex flex-wrap gap-4">
+                  <a href={contactInfo.whatsappLink} target="_blank" rel="noopener noreferrer">
+                    <button className="bg-black hover:bg-gray-800 text-white font-bold text-lg px-8 py-6 border-2 border-black shadow-[6px_6px_0px_0px_rgba(250,204,21,1)] hover:shadow-[3px_3px_0px_0px_rgba(250,204,21,1)] transition-all inline-flex items-center gap-2 rounded-md">
+                      <MessageCircle className="h-6 w-6" />
+                      WhatsApp: {contactInfo.phone}
+                    </button>
+                  </a>
+                </div>
+              </div>
+              <div className="relative">
+                <div className="absolute inset-0 bg-yellow-400 border-4 border-black rotate-3 rounded-lg"></div>
+                <img
+                  src="https://customer-assets.emergentagent.com/job_2d80d311-23e3-4b67-a48c-a05b64438fa1/artifacts/oi1f136a_ChatGPT%20Image%20Jan%2015%2C%202026%2C%2011_24_22%20AM.png"
+                  alt="Servicios de Costa Manitas en Gijón"
+                  width={600}
+                  height={600}
+                  className="relative border-4 border-black rounded-lg shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] w-full"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Sobre Costa Section */}
+        <section className="py-20 bg-white border-b-4 border-black">
+          <div className="container mx-auto px-4">
+            <div className="max-w-3xl mx-auto text-center">
+              <h2 className="text-4xl md:text-5xl font-black uppercase mb-8 relative inline-block">
+                Sobre Costa
+                <span className="absolute -bottom-2 left-0 w-full h-2 bg-yellow-400"></span>
+              </h2>
+              <div className="bg-gray-50 border-4 border-black p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+                <p className="text-lg font-bold text-gray-700 mb-4">
+                  Soy Costa, tu manitas de confianza en Gijón. Con años de experiencia en reparaciones 
+                  y mantenimiento del hogar, me dedico a solucionar esos pequeños (y no tan pequeños) 
+                  problemas que surgen en casa.
+                </p>
+                <p className="text-lg font-bold text-gray-700">
+                  Trabajo con presupuesto previo y solo en Gijón y zonas cercanas, garantizando un servicio cercano, 
+                  honesto y de calidad. ¡No dejes que los problemas crezcan, contáctame hoy!
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Servicios Section */}
+        <section className="py-20 bg-gradient-to-br from-white to-gray-50 border-b-4 border-black">
+          <div className="container mx-auto px-4">
+            <h2 className="text-4xl md:text-5xl font-black uppercase text-center mb-12 relative inline-block left-1/2 -translate-x-1/2">
+              Servicios
+              <span className="absolute -bottom-2 left-0 w-full h-2 bg-yellow-400"></span>
+            </h2>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {services.map((service, index) => {
+                const IconComponent = iconComponents[service.icon];
+                return (
+                  <div
+                    key={service.id}
+                    className="border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all hover:-translate-y-1 bg-white rounded-lg"
+                  >
+                    <div className="p-6">
+                      <div className="relative mb-4 -mx-6 -mt-6">
+                        <div 
+                          className="w-full h-32 bg-gradient-to-br from-gray-50 to-gray-100 border-b-4 border-black flex items-center justify-center relative overflow-hidden rounded-t-lg"
+                          style={{
+                            backgroundImage: `radial-gradient(circle, #000 1px, transparent 1px), radial-gradient(circle, #000 1px, transparent 1px)`,
+                            backgroundSize: '4px 4px, 6px 6px',
+                            backgroundPosition: '0 0, 3px 3px'
+                          }}
+                        >
+                          <div className="absolute inset-0 opacity-5" style={{
+                            backgroundImage: 'repeating-linear-gradient(45deg, black 0, black 2px, transparent 2px, transparent 8px)'
+                          }}></div>
+                          
+                          <div 
+                            className="relative z-10 bg-white border-4 border-black p-4 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
+                            style={{ transform: `rotate(${index % 2 === 0 ? '-2deg' : '2deg'})` }}
+                          >
+                            {IconComponent && <IconComponent className="h-12 w-12 stroke-[2.5px]" />}
+                          </div>
+                          
+                          <div className="absolute top-4 left-4 w-12 h-1 bg-black transform -rotate-12"></div>
+                          <div className="absolute top-6 left-3 w-8 h-1 bg-black transform -rotate-12"></div>
+                          <div className="absolute bottom-4 right-4 w-12 h-1 bg-black transform rotate-12"></div>
+                          <div className="absolute bottom-6 right-3 w-8 h-1 bg-black transform rotate-12"></div>
+                        </div>
+                      </div>
+                      
+                      <h3 className="font-black text-lg uppercase leading-tight mb-3">
+                        {service.title}
+                      </h3>
+                      <p className="text-gray-700 font-bold text-base leading-relaxed">
+                        {service.description}
+                      </p>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+        {/* Contact Section */}
+        <section className="py-20 bg-white">
+          <div className="container mx-auto px-4">
+            <h2 className="text-4xl md:text-5xl font-black uppercase text-center mb-12 relative inline-block left-1/2 -translate-x-1/2">
+              Contacto
+              <span className="absolute -bottom-2 left-0 w-full h-2 bg-yellow-400"></span>
+            </h2>
+            <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-8">
+              <div className="border-4 border-black p-8 bg-yellow-400 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] rounded-lg">
+                <h3 className="text-3xl font-black uppercase mb-6">¡Hablemos!</h3>
+                <div className="space-y-4">
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 bg-white border-2 border-black rounded-lg flex items-center justify-center">
+                      <Phone className="h-6 w-6" />
+                    </div>
+                    <div>
+                      <p className="font-bold text-sm">Teléfono / WhatsApp</p>
+                      <p className="text-2xl font-black">{contactInfo.phone}</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 bg-white border-2 border-black rounded-lg flex items-center justify-center">
+                      <MessageCircle className="h-6 w-6" />
+                    </div>
+                    <div>
+                      <p className="font-bold text-sm">Ubicación</p>
+                      <p className="text-2xl font-black">{contactInfo.areaServed}</p>
+                    </div>
+                  </div>
+                  <div className="border-t-4 border-black pt-4 mt-4">
+                    <p className="font-bold text-sm mb-2">Horario</p>
+                    <p className="text-lg font-black">{contactInfo.schedule}</p>
+                  </div>
+                </div>
+                <a href={contactInfo.whatsappLink} target="_blank" rel="noopener noreferrer">
+                  <button className="w-full mt-6 bg-black hover:bg-gray-800 text-white font-bold text-lg py-6 border-2 border-black shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] hover:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)] transition-all inline-flex items-center justify-center gap-2 rounded-md">
+                    <MessageCircle className="h-6 w-6" />
+                    Enviar WhatsApp
+                  </button>
+                </a>
+              </div>
+              <div className="border-4 border-black p-8 bg-white shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] flex flex-col items-center justify-center rounded-lg">
+                <h3 className="text-2xl font-black uppercase mb-4 text-center">
+                  Escanea el código QR
+                </h3>
+                <img
+                  src={contactInfo.qrCode}
+                  alt="QR Code WhatsApp Costa Manitas"
+                  width={200}
+                  height={200}
+                  className="w-48 h-48 border-4 border-black"
+                />
+                <p className="text-center font-bold mt-4 text-gray-700">
+                  Contáctame directamente desde tu móvil
+                </p>
+              </div>
+            </div>
+            <div className="mt-12 text-center">
+              <div className="inline-block bg-gray-100 border-4 border-black px-8 py-4 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] rounded-lg">
+                <p className="text-lg font-black uppercase">Presupuesto previo · Solo Gijón y zonas cercanas</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Footer */}
+        <footer className="bg-black text-white py-8 border-t-4 border-black">
+          <div className="container mx-auto px-4 text-center">
+            <p className="font-bold text-lg mb-2">Costa Manitas Gijón</p>
+            <p className="text-sm font-bold text-gray-400">
+              Tu manitas de confianza · {new Date().getFullYear()}
+            </p>
+            <p className="text-xs text-gray-500 mt-2">
+              Pequeñas reparaciones, mantenimiento y carpintería ligera en Gijón
+            </p>
+          </div>
+        </footer>
+      </div>
     </>
   )
 }
