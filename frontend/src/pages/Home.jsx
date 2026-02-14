@@ -72,8 +72,8 @@ const Home = () => {
 
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-gray-50 to-white border-b-4 border-black">
-        <div className="container mx-auto px-4 py-20">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
+        <div className="container mx-auto px-4 py-12">
+          <div className="grid md:grid-cols-2 gap-12 items-start">
             <div>
               <div className="inline-block bg-yellow-400 border-2 border-black px-4 py-2 rotate-[-2deg] mb-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
                 <p className="text-sm font-black uppercase">Solo en Gijón</p>
