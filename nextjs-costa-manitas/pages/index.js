@@ -1,20 +1,20 @@
 import Head from 'next/head'
 import { useState } from 'react'
-import {
-  Hammer,
-  Paintbrush,
-  Drill,
-  Zap,
-  Droplet,
-  DoorOpen,
-  Wrench,
-  Scissors,
-  SearchCheck,
-  ClipboardCheck,
-  Phone,
-  MessageCircle,
-  ChevronLeft,
-  ChevronRight
+import { 
+  Hammer, 
+  Paintbrush2 as Paintbrush, 
+  Drill as DrillIcon, 
+  Zap, 
+  Droplet, 
+  DoorOpen, 
+  Wrench, 
+  Scissors, 
+  SearchCheck, 
+  ClipboardCheck, 
+  Phone, 
+  MessageCircle, 
+  ChevronLeft, 
+  ChevronRight 
 } from "lucide-react"
 import { Button } from "../components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../components/ui/card"
@@ -23,7 +23,7 @@ import { services, galleryImages, contactInfo } from "../data/mock"
 const iconMap = {
   hammer: Hammer,
   paintbrush: Paintbrush,
-  drill: Drill,
+  drill: DrillIcon,
   zap: Zap,
   droplet: Droplet,
   "door-open": DoorOpen,
