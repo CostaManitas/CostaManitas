@@ -123,9 +123,9 @@ export default function Home() {
               <div className="inline-block bg-yellow-400 border-2 border-black px-4 py-2 rotate-[-2deg] mb-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
                 <p className="text-sm font-black uppercase">Solo en Gijón</p>
               </div>
-              <h2 className="text-5xl md:text-6xl font-black uppercase mb-6 leading-tight">
-                ¡Cuéntame qué necesitas!
-              </h2>
+              <h1 className="text-5xl md:text-6xl font-black uppercase mb-6 leading-tight">
+                Manitas en Gijón para reparaciones del hogar
+              </h1>
               <p className="text-xl mb-8 font-bold text-gray-700">
                 Reparaciones y mantenimiento del hogar con presupuesto previo. 
                 Tu manitas de confianza para pequeños y grandes trabajos.
