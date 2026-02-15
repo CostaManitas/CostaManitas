@@ -1,0 +1,5 @@
+# robots.txt para Costa Manitas
+User-agent: *
+Allow: /
+
+Sitemap: https://costamanitas.com/sitemap.xml
