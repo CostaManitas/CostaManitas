@@ -96,12 +96,12 @@ export default function Home() {
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center gap-4">
             <img
-              src="https://customer-assets.emergentagent.com/job_2d80d311-23e3-4b67-a48c-a05b64438fa1/artifacts/ght79igp_Opcion%20A.jfif"
-              alt="Costa Manitas Logo"
+              src="/logo.png"
+              alt="Costa Manitas Gijón"
               className="h-20 w-auto"
             />
             <div>
-              <h1 className="text-2xl md:text-3xl font-black uppercase tracking-tight">Costa Manitas Gijón</h1>
+              <div className="text-2xl md:text-3xl font-black uppercase tracking-tight">Costa Manitas Gijón</div>
               <p className="text-xs md:text-sm font-bold">Tu manitas de confianza</p>
             </div>
           </div>
