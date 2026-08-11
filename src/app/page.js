@@ -19,10 +19,10 @@ import {
   ShieldCheck,
   Receipt,
   Users,
-  House,
-  ChevronLeft,
-  ChevronRight
+  House
 } from "lucide-react"
+import Header from "../components/Header"
+import Footer from "../components/Footer"
 
 function FAQItem({ item }) {
   const [open, setOpen] = useState(false)
@@ -160,14 +160,7 @@ const reviews = [
   }
 ]
 
-const galleryImages = [
-  { id: 1, title: "Reparación de puerta", image: "https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?w=600&h=400&fit=crop" },
-  { id: 2, title: "Montaje de muebles", image: "https://images.unsplash.com/photo-1615874694520-474822394e73?w=600&h=400&fit=crop" },
-  { id: 3, title: "Trabajos de fontanería", image: "https://images.unsplash.com/photo-1607472586893-edb57bdc0e39?w=600&h=400&fit=crop" },
-  { id: 4, title: "Instalación eléctrica", image: "https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=600&h=400&fit=crop" },
-  { id: 5, title: "Pintura y barniz", image: "https://images.unsplash.com/photo-1562259949-e8e7689d7828?w=600&h=400&fit=crop" },
-  { id: 6, title: "Trabajos de jardín", image: "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=600&h=400&fit=crop" }
-]
+// galleryImages removed (hidden gallery was deleted)
 
 const trabajos = [
   {
@@ -241,15 +234,7 @@ const iconMap = {
 }
 
 export default function Home() {
-  const [currentImageIndex, setCurrentImageIndex] = useState(0)
-
-  const nextImage = () => {
-    setCurrentImageIndex((prev) => (prev + 1) % galleryImages.length)
-  }
-
-  const prevImage = () => {
-    setCurrentImageIndex((prev) => (prev - 1 + galleryImages.length) % galleryImages.length)
-  }
+  // currentImageIndex and image navigation removed (only used by hidden gallery)
 
   return (
     <div className="min-h-screen bg-white">
@@ -264,34 +249,8 @@ export default function Home() {
         <MessageCircle className="h-8 w-8" />
       </a>
 
-      {/* Header */}
-      <header className="border-b-4 border-black bg-white sticky top-0 z-40">
-        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-4">
-            <img
-              src="/logo.png"
-              alt="Costa Manitas Gijón"
-              className="h-20 w-auto"
-            />
-            <div>
-              <div className="text-2xl md:text-3xl font-black uppercase tracking-tight">Costa Manitas Gijón</div>
-              <p className="text-xs md:text-sm font-bold">Tu manitas de confianza</p>
-            </div>
-          </div>
-          <a href={contactInfo.whatsappLink} target="_blank" rel="noopener noreferrer" data-testid="header-whatsapp-btn">
-            <button className="bg-yellow-400 hover:bg-yellow-500 text-black font-bold border-4 border-black transition-all flex items-center justify-center
-			  md:px-6 md:py-3 md:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]
-			  p-3 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
-
-			  <MessageCircle className="h-5 w-5 md:mr-2" />
-
-			  <span className="hidden md:inline">
-				Contactar WhatsApp
-			  </span>
-			</button>
-          </a>
-        </div>
-      </header>
+      {/* Header (extracted) */}
+      <Header whatsappLink={contactInfo.whatsappLink} />
 
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-gray-50 to-white border-b-4 border-black" data-testid="hero-section">
@@ -633,67 +592,7 @@ export default function Home() {
 			</div>
 		  </div>
 		</section>
-      {/* Galería Section */}
-      <section className="py-20 bg-gradient-to-br from-gray-50 to-white border-b-4 border-black" data-testid="gallery-section" hidden >
-        <div className="container mx-auto px-4">
-          <h2 className="text-4xl md:text-5xl font-black uppercase text-center mb-12 relative inline-block left-1/2 -translate-x-1/2">
-            Trabajos Realizados
-            <span className="absolute -bottom-2 left-0 w-full h-2 bg-yellow-400"></span>
-          </h2>
-          
-          {/* Featured Image Carousel */}
-          <div className="max-w-4xl mx-auto mb-8">
-            <div className="relative border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] bg-white">
-              <img
-                src={galleryImages[currentImageIndex].image}
-                alt={galleryImages[currentImageIndex].title}
-                className="w-full h-96 object-cover"
-              />
-              <div className="absolute bottom-0 left-0 right-0 bg-yellow-400 border-t-4 border-black p-4">
-                <p className="font-black text-xl uppercase text-center">
-                  {galleryImages[currentImageIndex].title}
-                </p>
-              </div>
-              <button
-                onClick={prevImage}
-                className="absolute left-4 top-1/2 -translate-y-1/2 bg-white border-4 border-black p-3 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all"
-                data-testid="gallery-prev-btn"
-              >
-                <ChevronLeft className="h-6 w-6" />
-              </button>
-              <button
-                onClick={nextImage}
-                className="absolute right-4 top-1/2 -translate-y-1/2 bg-white border-4 border-black p-3 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all"
-                data-testid="gallery-next-btn"
-              >
-                <ChevronRight className="h-6 w-6" />
-              </button>
-            </div>
-          </div>
-
-          {/* Thumbnail Grid */}
-          <div className="grid grid-cols-3 md:grid-cols-6 gap-4 max-w-4xl mx-auto">
-            {galleryImages.map((image, index) => (
-              <button
-                key={image.id}
-                onClick={() => setCurrentImageIndex(index)}
-                className={`border-4 border-black overflow-hidden transition-all ${
-                  currentImageIndex === index
-                    ? "shadow-[4px_4px_0px_0px_rgba(250,204,21,1)] scale-105"
-                    : "shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:scale-105"
-                }`}
-                data-testid={`gallery-thumb-${image.id}`}
-              >
-                <img
-                  src={image.image}
-                  alt={image.title}
-                  className="w-full h-20 object-cover"
-                />
-              </button>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* Gallery section removed (was hidden) */}
 	  
 	  {/* English Section */}
 		<section className="py-12 md:py-20 bg-gradient-to-br from-white to-gray-50 border-b-4 border-black">
@@ -790,22 +689,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-black text-white py-8 border-t-4 border-black">
-        <div className="container mx-auto px-4 text-center">
-		<p className="text-sm text-gray-400 max-w-3xl mx-auto mb-4">
-  Costa Manitas es un servicio local de pequeñas reparaciones y mantenimiento del hogar en Gijón. Trabajo directamente en viviendas y pequeños negocios, por lo que no dispongo de local abierto al público.
-</p>
-          <p className="font-bold text-lg mb-2">Costa Manitas Gijón</p>
-         <p className="text-sm font-bold text-gray-400">
-			  Tu manitas de confianza · WhatsApp: +34 687 70 54 05
-			</p>
-
-			<p className="text-[10px] text-gray-600 mt-1">
-			  Contacto directo: +34687705405
-			</p>
-        </div>
-      </footer>
+      {/* Footer (extracted) */}
+      <Footer phone={contactInfo.phone} />
     </div>
   )
 }
