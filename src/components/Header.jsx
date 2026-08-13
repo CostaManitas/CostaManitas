@@ -14,7 +14,7 @@ export default function Header({ whatsappLink = site.whatsappLink }) {
             className="h-20 w-auto"
           />
           <div>
-            <div className="text-2xl md:text-3xl font-black uppercase tracking-tight">{site.siteName}</div>
+            <div className="text-2xl md:text-3xl font-black uppercase tracking-tight">COSTA MANITAS</div>
             <p className="text-xs md:text-sm font-bold">Tu manitas de confianza</p>
           </div>
         </div>
