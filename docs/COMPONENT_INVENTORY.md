@@ -6,15 +6,15 @@ Questo inventario è ricavato esclusivamente dal codice sorgente presente in `fr
 
 | Pattern / Componente | File (path) | Componente separato? | Riutilizzabile? | Dove usato | Note responsive |
 |---|---:|:---:|:---:|---|---|
-| Header (markup) | `src/app/page.js` (header section) | No (markup inline in Home) | N/A (markup inline) | Homepage (header) | Sticky `sticky top-0`, responsive title sizing via `md:` |
-| Footer (markup) | `src/app/page.js` (footer) | No (markup inline) | N/A | Homepage (footer) | semplice, responsivo |
+| Header (component) | `src/components/Header.jsx` | Sì (separato) | Sì | Homepage (header) | Sticky `sticky top-0`, responsive title sizing via `md:` |
+| Footer (component) | `src/components/Footer.jsx` | Sì (separato) | Sì | Homepage (footer) | semplice, responsivo |
 | Hero (pattern) | `src/app/page.js` (hero section) | No (markup inline) | N/A — pattern ripetibile | Homepage | Grid responsive (`md:grid-cols-2`) |
 | Button (component) | `src/components/ui/button.jsx` | Sì | Sì | Header CTA, Hero CTAs, Contact buttons, Carousel controls | Varianti `size` e `variant`; `icon` size; supports `asChild` |
 | Card (component) | `src/components/ui/card.jsx` | Sì | Sì | Services, Testimonials, Contact boxes, ecc. | Usato dentro grid responsive; padding e layout interni fissi |
 | Carousel (component) | `src/components/ui/carousel.jsx` | Sì | Sì | (carousel generic) used in components and gallery patterns | Implementa `embla-carousel-react`; supports keyboard, swipe; prev/next controls |
 | Icon set | `lucide-react` (package) | N/A (library) | Sì (library) | Icons imported in `src/app/page.js` and UI components | Dimensioni via classes (h-6,w-6,h-12,w-12); strokes adjusted via `stroke-[2.5px]` |
-| Services list (data) | `src/data/mock.js` | N/A (data) | N/A | `src/app/page.js` maps `services` into Cards | Data-driven rendering |
-| Testimonials list (data) | `src/data/mock.js` | N/A | N/A | `src/app/page.js` maps `testimonials` into Cards | Shows star icons |
+| Services list (data) | `src/app/page.js` (homepage) | N/A (data) | N/A | `src/app/page.js` maps `services` into Cards | Data-driven rendering |
+| Testimonials list (data) | `src/app/page.js` (homepage) | N/A | N/A | `src/app/page.js` maps `reviews` into Cards | Shows star icons |
 | Gallery (markup + simple carousel) | `src/app/page.js` (gallery featured + thumbnails) | Mixed: featured slider implemented inline + Carousel component exists separately | Partially (thumbnails inline) | Homepage gallery | Thumbnail grid responsive (3→6 cols), featured image has prev/next buttons inline |
 | Contact block | `src/app/page.js` | No (markup inline using `Button`) | N/A | Homepage (contact section) | two-column `md:grid-cols-2` |
 | CardHeader / CardTitle / CardDescription (sub-components) | `src/components/ui/card.jsx` | Sì (exported) | Sì | Used in many Cards (services, testimonials) | layout classes embedded in component |
@@ -29,9 +29,7 @@ Questo inventario è ricavato esclusivamente dal codice sorgente presente in `fr
 - `src/components/ui/*` — molti componenti UI opzionali presenti (accordion, dialog, toast, etc.). Questi file esistono e possono essere riutilizzati ma non tutti sono referenziati direttamente nella homepage.
 
 ## Dove non esiste un componente separato (implementazione inline)
-- `Header` markup è inline in `src/app/page.js` (non c'è `Header.jsx` separato).
 - `Hero` markup è inline in `src/app/page.js`.
-- `Footer` markup è inline in `src/app/page.js`.
 - `Gallery featured` slider è implementato inline (stateful with `currentImageIndex`) nel `Home.jsx` senza usare il `Carousel` component.
 
 ## Dipendenze rilevanti per i componenti

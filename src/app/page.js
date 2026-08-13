@@ -23,6 +23,7 @@ import {
 } from "lucide-react"
 import Header from "../components/Header"
 import Footer from "../components/Footer"
+import site from "../data/site"
 
 function FAQItem({ item }) {
   const [open, setOpen] = useState(false)
@@ -215,10 +216,10 @@ const trabajos = [
 ]
 
 const contactInfo = {
-  phone: "687 70 54 05",
+  phone: site.phoneDisplay,
   location: "Gijón",
-  whatsappLink: "https://wa.me/34687705405",
-  qrCode: "https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://wa.me/34687705405"
+  whatsappLink: site.whatsappLink,
+  qrCode: site.qrCode
 }
 
 const iconMap = {

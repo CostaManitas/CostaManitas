@@ -1,7 +1,8 @@
 import './globals.css'
+import site from "../data/site"
 
 export const metadata = {
-  metadataBase: new URL('https://www.manitasengijon.es'),
+	metadataBase: new URL(site.siteUrl),
   title: 'Manitas en Gijón | Trato directo y trabajo cuidado',
   description: 'Manitas en Gijón para pequeñas reparaciones y mantenimiento del hogar. Trabajo cuidado, trato directo y presupuesto claro. Escríbeme por WhatsApp.',
   keywords: 'manitas Gijón, reparaciones hogar Gijón, fontanero Gijón, electricista Gijón, carpintero Gijón, pintor Gijón, mantenimiento hogar, bricolaje, reformas pequeñas',
@@ -12,13 +13,13 @@ export const metadata = {
   openGraph: {
     title: 'Costa Manitas Gijón - Tu Manitas de Confianza',
     description: 'Reparaciones y mantenimiento del hogar en Gijón. Presupuesto previo. WhatsApp: 687 70 54 05',
-    url: 'https://www.manitasengijon.es',
+	url: site.siteUrl,
     siteName: 'Costa Manitas Gijón',
     locale: 'es_ES',
     type: 'website',
 	images: [
-	  {
-		url: '/og-image-V2.jpg',
+			{
+				url: site.ogImage,
 		width: 1200,
 		height: 630,
 		alt: 'Costa Manitas Gijón - Reparaciones del Hogar'
@@ -31,7 +32,7 @@ export const metadata = {
     description: 'Reparaciones y mantenimiento del hogar en Gijón. Presupuesto previo.',
   },
   alternates: {
-    canonical: 'https://www.manitasengijon.es',
+	canonical: site.siteUrl,
   },
 }
 
@@ -50,10 +51,10 @@ export default function RootLayout({ children }) {
             __html: JSON.stringify({
 			  "@context": "https://schema.org",
 			  "@type": "LocalBusiness",
-			  "name": "Costa Manitas Gijón",
-			  "image": "https://www.manitasengijon.es/logo.png",
-			  "url": "https://www.manitasengijon.es",
-			  "telephone": "+34687705405",
+			  "name": site.siteName,
+			  "image": `${site.siteUrl}${site.logo}`,
+			  "url": site.siteUrl,
+			  "telephone": site.phoneIntl,
 			  "priceRange": "€",
 			  "address": {
 				"@type": "PostalAddress",
@@ -82,10 +83,10 @@ export default function RootLayout({ children }) {
 				"opens": "09:00",
 				"closes": "18:00"
 			  }],
-			  "sameAs": [
-				"https://wa.me/34687705405",
-				"tel:+34687705405"
-			  ],
+							"sameAs": [
+								site.whatsappLink,
+								`tel:${site.phoneIntl}`
+							],
 			  "hasOfferCatalog": {
 			  "@type": "OfferCatalog",
 			  "name": "Servicios de manitas en Gijón",
