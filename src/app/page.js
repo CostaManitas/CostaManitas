@@ -1,13 +1,17 @@
 'use client'
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import {
-  Gavel,
+  Package,
+  Wrench,
+  Ruler,
+  Zap,
+  Hammer,
+  Droplet,
+  Leaf,
   Paintbrush,
   Drill,
   Lightbulb,
-  Droplet,
-  Wrench,
   Fence,
   SearchCheck,
   ClipboardCheck,
@@ -19,11 +23,13 @@ import {
   ShieldCheck,
   Receipt,
   Users,
-  House
+  House,
+  ArrowRight
 } from "lucide-react"
 import Header from "../components/Header"
 import Footer from "../components/Footer"
 import site from "../data/site"
+import trabajos from "../data/trabajos"
 
 function FAQItem({ item }) {
   const [open, setOpen] = useState(false)
@@ -81,59 +87,47 @@ const trustItems = [
 ]
 
 const services = [
-  { 
-    id: 1, 
-    title: "Retoques y reparación de madera existente", 
-    description: "Reparación y restauración ligera de muebles y elementos de madera, como bisagras sueltas, cajones que no encajan o puertas que rozan. Ajustes, refuerzos y recuperación de piezas dañadas para dar una segunda vida a muebles que merecen seguir formando parte del hogar.",
-	icon: "hammer"
+  {
+    id: 1,
+    title: 'Montaje y adaptación de muebles',
+    description: 'Montaje de armarios, muebles, estanterías y muebles de cocina, con ajustes y adaptaciones cuando el espacio o el mueble lo requieren.',
+    icon: 'package',
+    anchor: 'montaje-adaptacion-muebles'
   },
-  { 
-    id: 2, 
-    title: "Esmaltes, barniz y antióxido", 
-    description: "Aplicación de esmaltes y barnices en madera y metal para proteger y renovar superficies. Cambio de color, acabados decorativos y tratamiento antióxido en rejas, puertas metálicas o mobiliario.", 
-    icon: "paintbrush" 
+  {
+    id: 2,
+    title: 'Puertas, persianas y herrajes',
+    description: 'Reparación y ajuste de puertas y persianas, cambio de bisagras, manillas y otros herrajes deteriorados.',
+    icon: 'wrench',
+    anchor: 'puertas-persianas-herrajes'
   },
-  { 
-    id: 3, 
-    title: "Montajes y perforaciones", 
-    description: "Instalación de baldas, estantes, soportes de televisión o barras de cortina, así como colocación de papel pintado y pequeños detalles decorativos. Montaje seguro y nivelado en salones, cocinas o habitaciones, adaptando la fijación al tipo de pared y cuidando el acabado final.", 
-    icon: "drill" 
+  {
+    id: 3,
+    title: 'Instalación de elementos en paredes',
+    description: 'Instalación de espejos, estanterías, soportes de TV, barras para cortinas y otros elementos fijados a pared.',
+    icon: 'ruler',
+    anchor: 'instalacion-elementos-paredes'
   },
-  { 
-    id: 4, 
-    title: "Electricidad básica", 
-    description: "Sustitución de enchufes, interruptores y mecanismos antiguos, instalación de lámparas o plafones LED, y adaptación de puntos de luz mediante canaleta exterior. Intervenciones sencillas realizadas con orden y seguridad.", 
-    icon: "zap" 
+  {
+    id: 4,
+    title: 'Iluminación y pequeñas reparaciones eléctricas',
+    description: 'Instalación de lámparas y apliques, sustitución de enchufes, interruptores y timbres, y pequeñas reparaciones eléctricas.',
+    icon: 'zap',
+    anchor: 'iluminacion-pequenas-reparaciones-electricas'
   },
-  { 
-    id: 5, 
-    title: "Fontanería simple", 
-    description: "Cambio de grifos en cocina o baño, sustitución de sifones y latiguillos, y renovación de sellados con silicona en bañeras y fregaderos. Pequeñas mejoras que actualizan el espacio y ayudan a mantenerlo en buen estado.", 
-    icon: "droplet" 
+  {
+    id: 5,
+    title: 'Carpintería, madera y acabados',
+    description: 'Reparaciones y ajustes de madera, pequeños trabajos de carpintería, cortes, adaptaciones, barnizado, esmaltes y acabados.',
+    icon: 'hammer',
+    anchor: 'carpinteria-madera-acabados'
   },
-  { 
-    id: 6, 
-    title: "Reparaciones domésticas puntuales", 
-    description: "Solución de pequeños arreglos y mini proyectos a medida en el hogar. Desde ajustes prácticos hasta pequeñas estructuras ligeras en madera o mobiliario adaptado a espacios concretos, pensados para mejorar la funcionalidad sin necesidad de grandes obras.", 
-    icon: "wrench" 
-  },
-  { 
-    id: 7, 
-    title: "Jardín – trabajos puntuales", 
-    description: "Mejora y mantenimiento puntual de jardines, incluyendo organización del espacio, colocación de pequeños caminos o delimitaciones y adaptación de sistemas sencillos de riego para facilitar el cuidado del exterior.", 
-    icon: "scissors" 
-  },
-  { 
-    id: 8, 
-    title: "Revisión y pequeños mantenimientos", 
-    description: "Revisión, puesta a punto y mantenimiento periódico de distintos elementos del hogar en Gijón, con ajustes preventivos y comprobaciones básicas para mantener la vivienda en buen estado. Servicio útil tanto para particulares como para pequeñas comunidades, administradores, agencias inmobiliarias o propietarios de viviendas turísticas.", 
-    icon: "search-check" 
-  },
-  { 
-    id: 9, 
-    title: "Asesoramiento práctico en domicilio", 
-    description: "Asesoramiento práctico en domicilio en Gijón para valorar qué reparar, mejorar o sustituir antes de realizar un gasto innecesario. Orientación clara y cercana para tomar decisiones con criterio y planificar pequeñas mejoras en la vivienda.", 
-    icon: "clipboard-check" 
+  {
+    id: 6,
+    title: 'Fontanería y mantenimiento del hogar',
+    description: 'Pequeñas reparaciones de fontanería, cambios de grifos, ajustes, revisiones y mantenimiento puntual de la vivienda.',
+    icon: 'droplet',
+    anchor: 'fontaneria-mantenimiento-hogar'
   }
 ]
 
@@ -163,57 +157,7 @@ const reviews = [
 
 // galleryImages removed (hidden gallery was deleted)
 
-const trabajos = [
-  {
-    id: 1,
-    title: "Cambio de grifo en cocina en Gijón",
-    text: "Grifo antiguo con desgaste y riesgo de fugas. Sustitución por uno nuevo para mejorar el uso diario y evitar problemas.",
-    image: "/trabajos/trabajo-grifo.webp",
-    visible: true
-  },
-  {
-    id: 2,
-    title: "Reparación de cisterna WC en Gijón",
-    text: "Cisterna con pérdida de agua y mal funcionamiento. Sustitución del mecanismo de descarga para asegurar un uso correcto.",
-    image: "/trabajos/trabajo-cisterna.webp",
-    visible: false // 👈  nascosto
-  },
-  {
-    id: 3,
-    title: "Instalación de lámpara de techo",
-    text: "Lámpara antigua y pesada con sistema regulable en altura. Instalación de gancho con taco resistente para asegurar una fijación firme y segura. Revisión de conexiones y ajuste final para un funcionamiento correcto.",
-    image: "/trabajos/instalacion-lampara-techo-gancho-taco-gijon.webp",
-    visible: true 
-  },
-  {
-    id: 4,
-    title: "Montaje de soporte de TV en pared en Gijón",
-    text: "Instalación de soporte de TV en pared con fijación segura y ajuste para un uso cómodo y estable.",
-    image: "/trabajos/trabajo-tv.webp",
-    visible: true
-  },
-  {
-    id: 5,
-    title: "Reparación y pintura de pared y ventana",
-    text: "Zonas deterioradas en pared y ventana de madera. Reparación, pintura y restauración para mejorar el aspecto y proteger las superficies.",
-    image: "/trabajos/trabajo-pared.webp",
-    visible: true
-  },
-  {
-    id: 6,
-    title: "Montaje de mueble zapatero IKEA en Gijón",
-    text: "Montaje de mueble zapatero IKEA (modelo Ställ) con ajuste de puertas y fijación a pared para mayor seguridad y estabilidad.",
-    image: "/trabajos/montaje-mueble-zapatero-ikea-stall-gijon.webp",
-    visible: true
-  },
-  {
-    id: 7,
-    title: "Reparación y mantenimiento de persiana en Gijón",
-    text: "Persiana que no bajaba correctamente por suciedad en el mecanismo. Limpieza, ajuste y lubricación para mejorar el funcionamiento sin necesidad de sustituir.",
-    image: "/trabajos/arreglo-persiana-atascada-limpieza-mecanismo-gijon.webp",
-    visible: true
-  }
-]
+// `trabajos` dataset now imported from src/data/trabajos.js
 
 const contactInfo = {
   phone: site.phoneDisplay,
@@ -223,12 +167,14 @@ const contactInfo = {
 }
 
 const iconMap = {
-  hammer: Gavel,
+  package: Package,
+  wrench: Wrench,
+  ruler: Ruler,
+  zap: Zap,
+  hammer: Hammer,
+  droplet: Droplet,
   paintbrush: Paintbrush,
   drill: Drill,
-  zap: Lightbulb,
-  droplet: Droplet,
-  wrench: Wrench,
   scissors: Fence,
   "search-check": SearchCheck,
   "clipboard-check": ClipboardCheck
@@ -236,6 +182,21 @@ const iconMap = {
 
 export default function Home() {
   // currentImageIndex and image navigation removed (only used by hidden gallery)
+  const [previewTrabajos, setPreviewTrabajos] = useState(() => {
+    const visibles = trabajos.filter(t => t.visible)
+    return visibles.slice(0, 3)
+  })
+
+  useEffect(() => {
+    const visibles = trabajos.filter(t => t.visible)
+    if (visibles.length <= 3) return
+    const copy = [...visibles]
+    for (let i = copy.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1))
+      ;[copy[i], copy[j]] = [copy[j], copy[i]]
+    }
+    setPreviewTrabajos(copy.slice(0, 3))
+  }, [])
 
   return (
     <div className="min-h-screen bg-white">
@@ -299,17 +260,13 @@ export default function Home() {
       </h2>
       <div className="bg-gray-50 border-4 border-black p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
         <p className="text-lg font-bold text-gray-700 mb-4">
-          Soy Costa y me gusta trabajar de forma cercana y responsable, cuidando los detalles 
-          que muchas veces se pasan por alto en casa. Disfruto resolviendo esos pequeños arreglos que
-          hacen que todo vuelva a funcionar como debe.
+          Soy Costa y me gusta trabajar de forma cercana y responsable, cuidando los detalles que muchas veces se pasan por alto en casa. Disfruto resolviendo esos pequeños arreglos que hacen que todo vuelva a funcionar como debe.
         </p>
         <p className="text-lg font-bold text-gray-700 mb-4">
-          No me dedico a grandes reformas, sino a mejoras puntuales, ajustes y soluciones prácticas del día a día. 
-          Creo en el trabajo bien hecho, en explicar las cosas con claridad y en ofrecer siempre un presupuesto previo.
+          No me dedico a grandes reformas, sino a mejoras puntuales, ajustes y soluciones prácticas del día a día. Si no tienes claro cómo solucionar un pequeño problema, puedes explicarme qué necesitas y valorar conmigo la opción más práctica antes de realizar el trabajo. Creo en el trabajo bien hecho, en explicar las cosas con claridad y en ofrecer siempre un presupuesto previo.
         </p>
         <p className="text-lg font-bold text-gray-700">
-          Trabajo exclusivamente en Gijón, lo que me permite dar un trato directo y estar
-          disponible cuando realmente se necesita.
+          Trabajo exclusivamente en Gijón, lo que me permite dar un trato directo y estar disponible cuando realmente se necesita.
         </p>
       </div>
     </div>
@@ -403,46 +360,40 @@ export default function Home() {
     </div>
 
     {/* Grid */}
-		<div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-
-			{trabajos
-			  .filter(t => t.visible)
-			  .slice(0, 6)
-			  .map((trabajo) => (
-				<div
-				  key={trabajo.id}
-				  className="border-4 border-black bg-gray-50 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]"
-				>
-				  <img
-					  src={trabajo.image}
-					  alt={trabajo.title}
-					  width="800"
-					  height="600"
-					  loading="lazy"
-					className="w-full h-48 object-cover border-b-4 border-black"
-				  />
-				  <div className="p-4">
-					<h3 className="font-black uppercase text-sm mb-2">
-					  {trabajo.title}
-					</h3>
-					<p className="font-bold text-gray-700 text-sm">
-					  {trabajo.text}
-					</p>
-				  </div>
-				</div>
-			  ))}
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+      {previewTrabajos.map((trabajo) => (
+        <div
+          key={trabajo.id}
+          className="border-4 border-black bg-gray-50 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]"
+        >
+          <img
+            src={trabajo.image}
+            alt={trabajo.title}
+            width="800"
+            height="600"
+            loading="lazy"
+            className="w-full h-48 object-cover border-b-4 border-black"
+          />
+          <div className="p-4">
+            <h3 className="font-black uppercase text-sm mb-2">
+              {trabajo.title}
+            </h3>
+            <p className="font-bold text-gray-700 text-sm">
+              {trabajo.text}
+            </p>
+          </div>
+        </div>
+      ))}
     </div>
 
-    {/* CTA */}
-    <div className="text-center mt-10">
-      <p className="font-bold mb-4">
-        ¿Necesitas algo parecido?
-      </p>
-
-      <a href={contactInfo.whatsappLink} target="_blank" rel="noopener noreferrer">
-        <button className="bg-black text-white font-bold px-8 py-4 border-2 border-black shadow-[4px_4px_0px_0px_rgba(250,204,21,1)] hover:shadow-[2px_2px_0px_0px_rgba(250,204,21,1)] transition-all">
-          Escríbeme y te doy solución rápida
-        </button>
+    <div className="flex justify-center mt-6">
+      <a
+        href="/pequenas-reparaciones-hogar-gijon/"
+        className="group text-black font-black text-lg hover:text-gray-600 transition-colors inline-flex items-center gap-2"
+        aria-label="Ver todos los trabajos realizados en Gijón"
+      >
+        Ver todos los trabajos realizados en Gijón
+        <ArrowRight className="w-[22px] h-[22px] inline-block transform transition-transform duration-150 group-hover:translate-x-1" aria-hidden="true" />
       </a>
     </div>
 
@@ -534,11 +485,31 @@ export default function Home() {
                     <p className="text-gray-700 font-bold text-base leading-relaxed">
                       {service.description}
                     </p>
+                    <div className="mt-6 flex justify-end">
+                      <a
+                        href={`/pequenas-reparaciones-hogar-gijon/#${service.anchor}`}
+                        className="inline-flex items-center font-bold text-black group hover:text-gray-600 transition-colors"
+                      >
+                        Ver servicio
+                        <ArrowRight className="ml-2 w-5 h-5 transform transition-transform duration-150 group-hover:translate-x-1" aria-hidden="true" />
+                      </a>
+                    </div>
                   </div>
                 </div>
               )
             })}
-          </div>
+            </div>
+            <div className="w-full mt-6">
+              <div className="border-4 border-black bg-white shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+                <div className="max-w-6xl mx-auto px-4 py-4 flex items-center gap-4">
+                  <Leaf className="w-8 h-8 text-black flex-shrink-0" aria-hidden="true" />
+                  <div className="flex flex-col">
+                    <h3 className="font-black text-xl">Jardín y mantenimiento exterior</h3>
+                    <p className="font-bold text-gray-700 text-sm">También realizo pequeños trabajos de jardín y mantenimiento exterior.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
         </div>
       </section>
 		{/* FAQ Section */}
