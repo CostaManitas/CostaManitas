@@ -116,12 +116,13 @@ El mantenimiento periódico y las pequeñas reparaciones permiten mantener una v
 
         {/* Categories */}
         <section className="py-12 bg-white border-b-4 border-black">
+          <div className="px-4 text-center">
+            <h2 className="text-4xl md:text-5xl font-black uppercase mb-6 relative inline-block">
+              ¿Qué tipo de trabajos realizo?
+              <span className="absolute -bottom-2 left-0 w-full h-2 bg-yellow-400"></span>
+            </h2>
+          </div>
           <div className="container mx-auto px-4">
-            <div className="max-w-3xl md:max-w-5xl mx-auto text-center">
-              <h2 className="text-4xl md:text-5xl font-black uppercase mb-8 relative inline-block">¿Qué tipo de trabajos realizo?
-                <span className="absolute -bottom-2 left-0 w-full h-2 bg-yellow-400"></span>
-              </h2>
-            </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {categories.map((c, i) => (
                 <article id={c.anchor} key={i} className="border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all bg-white rounded-lg overflow-hidden">
@@ -167,16 +168,16 @@ El mantenimiento periódico y las pequeñas reparaciones permiten mantener una v
 
         {/* Trabajos reales */}
         <section className="py-12 bg-white border-b-4 border-black">
+          <div className="px-4 text-center">
+            <h2 className="text-4xl md:text-5xl font-black uppercase mb-6 relative inline-block">
+              Trabajos reales en viviendas de Gijón
+              <span className="absolute -bottom-2 left-0 w-full h-2 bg-yellow-400"></span>
+            </h2>
+          </div>
           <div className="container mx-auto px-4">
-            <div className="max-w-3xl mx-auto text-center">
-              <h2 className="text-4xl md:text-5xl font-black uppercase mb-8 relative inline-block">Trabajos reales en viviendas de Gijón
-                <span className="absolute -bottom-2 left-0 w-full h-2 bg-yellow-400"></span>
-              </h2>
-            </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
               {trabajos
                 .filter(t => t.visible)
-                .slice(0, 6)
                 .map((trabajo) => (
                   <div
                     key={trabajo.id}
@@ -215,14 +216,13 @@ El mantenimiento periódico y las pequeñas reparaciones permiten mantener una v
 
         {/* Cómo trabajo */}
         <section className="py-12 bg-white border-b-4 border-black">
-          <div className="container mx-auto px-4">
-            <div className="max-w-3xl mx-auto text-center">
-              <h2 className="text-4xl md:text-5xl font-black uppercase mb-8 relative inline-block">Cómo trabajo
+            <div className="px-4 text-center">
+              <h2 className="text-4xl md:text-5xl font-black uppercase mb-6 relative inline-block">Cómo trabajo
                 <span className="absolute -bottom-2 left-0 w-full h-2 bg-yellow-400"></span>
               </h2>
             </div>
-
-            <div className="relative">
+            <div className="container mx-auto px-4">
+              <div className="relative">
               <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
                 <div className="relative border-4 border-black p-6 bg-gray-50 text-center shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
                   <div className="absolute left-1 text-4xl md:text-5xl font-black text-black leading-none" style={{top: '-0.0625rem', textShadow: '2px 2px 0px #FACC15'}}>1</div>
@@ -262,12 +262,12 @@ El mantenimiento periódico y las pequeñas reparaciones permiten mantener una v
 
         {/* Qué no realizo */}
         <section className="py-12 bg-white border-b-4 border-black">
+          <div className="px-4 text-center">
+            <h2 className="text-4xl md:text-5xl font-black uppercase mb-6 relative inline-block">¿Qué tipo de trabajos no realizo?
+              <span className="absolute -bottom-2 left-0 w-full h-2 bg-yellow-400"></span>
+            </h2>
+          </div>
           <div className="container mx-auto px-4">
-            <div className="max-w-3xl mx-auto text-center">
-              <h2 className="text-4xl md:text-5xl font-black uppercase mb-8 relative inline-block">¿Qué tipo de trabajos no realizo?
-                <span className="absolute -bottom-2 left-0 w-full h-2 bg-yellow-400"></span>
-              </h2>
-            </div>
             <div className="border-4 border-black p-6 bg-gray-50 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] rounded-lg">
               <p className="font-bold text-gray-700">No realizo grandes reformas, obras completas ni instalaciones complejas. Mi trabajo está centrado en pequeñas reparaciones, montajes, ajustes y mantenimiento puntual.</p>
             </div>
@@ -276,12 +276,12 @@ El mantenimiento periódico y las pequeñas reparaciones permiten mantener una v
 
         {/* CTA final + link placeholder to Page 2 */}
         <section className="py-12 bg-white border-b-4 border-black">
+          <div className="px-4 text-center">
+            <h2 className="text-4xl md:text-5xl font-black uppercase mb-6 relative inline-block">¿Tienes un pequeño arreglo pendiente?
+              <span className="absolute -bottom-2 left-0 w-full h-2 bg-yellow-400"></span>
+            </h2>
+          </div>
           <div className="container mx-auto px-4 text-center">
-            <div className="max-w-3xl mx-auto text-center">
-              <h2 className="text-4xl md:text-5xl font-black uppercase mb-8 relative inline-block">¿Tienes un pequeño arreglo pendiente?
-                <span className="absolute -bottom-2 left-0 w-full h-2 bg-yellow-400"></span>
-              </h2>
-            </div>
             <p className="font-bold text-gray-700 mb-6">Cuéntame qué necesitas y te diré si puedo ayudarte.</p>
 
             <div className="flex justify-center gap-4 mb-6">
