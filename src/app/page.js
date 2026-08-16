@@ -134,24 +134,45 @@ const services = [
 const reviews = [
     {
     id: 4,
-    name: "José P.",
+    name: "Stella C.",
     rating: 5,
-    date: "Apr 2026",
-    text: "Un trabajo impecable en el montaje de un mueble"
+    date: "Ago 2026",
+    text: "Muy profesional, amable y limpio. Me ha ayudado a cortar un zócalo de cocina y a arreglar una bisagra. Muy buen trabajo."
   },
   {
     id: 5,
-    name: "Beatriz P.",
+    name: "Angel A.",
     rating: 5,
-    date: "Apr 2026",
-    text: "Me quedé  muy satisfecha con su trabajo, muy económico  y profesional, sin duda contaré  con sus servicios cuando lo necesite"
+    date: "Ago 2026",
+    text: "Persona seria y fiable, quedamos muy contentos con su trabajo y seguiremos usando sus servicios"
+  },
+  {
+    id: 2,
+    name: "Reyes C.",
+    rating: 5,
+    date: "Ago 2026",
+    text: "Costas hizo un trabajo excelente. Se tomó la molestia de averiguar el problema y de que quedara bien, incluso buscando en internet un mecanismo parecido. Además es muy puntual y siempre atiende los mensajes. Mi problema era pequeño pero él le puso el mismo empeño que siempre fuera algo mayor. Totalmente fiable."
+  },
+  {
+    id: 1,
+    name: "Pilar F.",
+    rating: 5,
+    date: "Jul 2026",
+    text: "He quedado satisfecha con el trabajo, muy profesional, puntual y amable. Recomendado cien por cien."
+  },
+  {
+    id: 6,
+    name: "Lauren G.",
+    rating: 5,
+    date: "Jul 2026",
+    text: "Highly Professional & Went Above and Beyond! Costa did an excellent job hanging my pendant lights and mounting 2 floating side table. He was punctual, efficient, precise, professional and very patient. One of the things that impressed me the most was that he went above and beyond by researching which dimmer switches would be perfectly compatible with my current electrical setup. His work is incredibly precise. I would definitely recommend Costa 100%!" 
   },
   {
     id: 3,
-    name: "Laura W.",
+    name: "Sandra O.",
     rating: 5,
-    date: "Mar 2026",
-    text: "Costa ha sido desde el minuto uno encantador y amable, no solo ha solucionado el problema que tenía, también ha sido una persona considerada con la que da gusto contar. Su trato y amabilidad son inmejorables al igual que su trabajo. Si necesito algo ya sé con quien contar sin dudarlo. Todo han sido facilidades con él"
+    date: "Jul 2026",
+    text: "No puedo más que tener buenas palabras para Costa, un excelente profesional que recomiendo al cien por cien. Monto un mueble comprado en Conforama que quedó fantástico. Una persona respetuosa, responsable educada, y como he dicho antes un gran profesional con el que seguiremos contando en casa y he recomendado a mis vecinos."
   }
 ]
 
@@ -285,7 +306,7 @@ export default function Home() {
       </h2>
 
       <p className="text-xl font-bold text-gray-700 mb-4">
-        ⭐ 5.0 en Google (17 reseñas)
+        ⭐ 4.9 en Google (29 reseñas)
       </p>
 
       <a 
