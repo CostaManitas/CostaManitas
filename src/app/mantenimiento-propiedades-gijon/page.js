@@ -8,6 +8,10 @@ import { MessageCircle, Phone, Package, Wrench, Ruler, Zap, Hammer, Droplet, Lig
 
 export const metadata = {
   title: 'Mantenimiento de propiedades en Gijón',
+  description: 'Mantenimiento de propiedades en Gijón. Pequeños trabajos, revisiones y reparaciones para viviendas, negocios y otras propiedades. Trato directo y presupuesto previo.',
+  alternates: {
+    canonical: `${site.siteUrl}/mantenimiento-propiedades-gijon/`,
+  },
 }
 
 
